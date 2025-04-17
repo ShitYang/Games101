@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "2.8.11"
+						"string" : "3.10"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "Assignment0",
+					"name" : "Rasterizer",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "Assignment0::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Assignment0-Debug-c96ae1d2e2aa7350026e.json",
-					"name" : "Assignment0",
+					"id" : "Rasterizer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Rasterizer-Debug-bb7edc76fb42bc11e637.json",
+					"name" : "Rasterizer",
 					"projectIndex" : 0
 				}
 			]
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/yk/Workspace/Games101/Assignment0/build",
-		"source" : "/home/yk/Workspace/Games101/Assignment0"
+		"build" : "/home/yk/Workspace/Games101/Assignment1/build",
+		"source" : "/home/yk/Workspace/Games101/Assignment1"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 7
+		"minor" : 6
 	}
 }
