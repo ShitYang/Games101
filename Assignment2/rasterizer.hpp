@@ -79,6 +79,8 @@ namespace rst
 
         void rasterize_triangle(const Triangle& t);
 
+        void super_sampling(int minx, int miny, int maxx, int maxy, const Triangle& t);
+
         // VERTEX SHADER -> MVP -> Clipping -> /.W -> VIEWPORT -> DRAWLINE/DRAWTRI -> FRAGSHADER
 
     private:
@@ -92,12 +94,17 @@ namespace rst
 
         std::vector<Eigen::Vector3f> frame_buf;
 
-        std::vector<float> depth_buf;
+        std::vector<float> depth_buf;  
+
         int get_index(int x, int y);
 
         int width, height;
 
         int next_id = 0;
         int get_next_id() { return next_id++; }
+
+        // MSAA
+        std::vector<std::vector<float>> sample_depth_buffer;
+        std::vector<std::vector<Eigen::Vector3f>> sample_color_buffer;
     };
 }
