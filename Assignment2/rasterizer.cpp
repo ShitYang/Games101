@@ -125,7 +125,7 @@ void rst::rasterizer::super_sampling(int minx, int miny, int maxx, int maxy, con
             int id = get_index(x, y);
             for (int i = 0; i < 4; ++i)
             {   
-                float tx = static_cast<float>(x) + dx[i], ty = static_cast<float>(y) + dy[i];
+                float tx = static_cast<float>(x + 0.5f) + dx[i], ty = static_cast<float>(y + 0.5f) + dy[i];
                 if (insideTriangle(tx, ty, t.v))
                 {
                     auto[alpha, beta, gamma] = computeBarycentric2D(tx, ty, t.v);
