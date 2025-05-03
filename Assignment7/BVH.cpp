@@ -108,7 +108,25 @@ Intersection BVHAccel::Intersect(const Ray& ray) const
 Intersection BVHAccel::getIntersection(BVHBuildNode* node, const Ray& ray) const
 {
     // TODO Traverse the BVH to find intersection
+    // TODO Traverse the BVH to find intersection
+    if (!node->bounds.IntersectP(ray, 
+        Vector3f{1.f / ray.direction.x, 1.f / ray.direction.y, 1.f / ray.direction.z},
+        std::array<int, 3>{ray.direction.x > 0, ray.direction.y > 0, ray.direction.z > 0}))
+    {
+        
+        return Intersection{};
+    }
 
+    if (!node->left && !node->right)
+    {
+        return node->object->getIntersection(ray);
+    }
+
+    Intersection l_intersection = getIntersection(node->left, ray);
+    Intersection r_intersection = getIntersection(node->right, ray);
+
+
+    return l_intersection.distance < r_intersection.distance ? l_intersection : r_intersection;
 }
 
 

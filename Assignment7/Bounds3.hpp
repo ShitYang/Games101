@@ -96,6 +96,30 @@ inline bool Bounds3::IntersectP(const Ray& ray, const Vector3f& invDir,
     // invDir: ray direction(x,y,z), invDir=(1.0/x,1.0/y,1.0/z), use this because Multiply is faster that Division
     // dirIsNeg: ray direction(x,y,z), dirIsNeg=[int(x>0),int(y>0),int(z>0)], use this to simplify your logic
     // TODO test if ray bound intersects
+    Vector3f t_array_exit, t_array_enter;
+    t_array_enter[0] = 1;
+    for (int i = 0; i < 3; ++i)
+    {
+        if (dirIsNeg[i] > 0)
+        {
+            t_array_enter[i] = pMin[i] - ray.origin[i];
+            t_array_exit[i] = pMax[i] - ray.origin[i];
+        }
+        else
+        {
+            t_array_enter[i] = pMax[i] - ray.origin[i];
+            t_array_exit[i] = pMin[i] - ray.origin[i];
+        }
+        
+    }
+
+    t_array_enter = t_array_enter * invDir;
+    t_array_exit = t_array_exit * invDir;
+
+    float t_enter = std::max({t_array_enter.x, t_array_enter.y, t_array_enter.z});
+    float t_exit = std::min({t_array_exit.x, t_array_exit.y, t_array_exit.z});
+
+    return t_exit > EPSILON && t_enter <= t_exit;
 
 }
 

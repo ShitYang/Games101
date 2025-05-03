@@ -254,6 +254,18 @@ inline Intersection Triangle::getIntersection(Ray ray)
 
     // TODO find ray triangle intersection
 
+    if (u >= -EPSILON && v >= -EPSILON && 1 - u - v >= -EPSILON && t_tmp > EPSILON)
+    {
+        inter.happened = true;
+        inter.distance = t_tmp;
+        inter.obj = this;
+        inter.m = m;
+        inter.coords = (1.0 - u - v) * v0 + u * v1 + v * v2;
+        inter.normal = normal;
+        inter.emit = m->getEmission();
+        return inter;
+    }
+
     return inter;
 }
 

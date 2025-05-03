@@ -109,4 +109,7 @@ public:
         // As a consequence of the conservation of energy, transmittance is given by:
         // kt = 1 - kr;
     }
+
+private:
+    Vector3f shade(const Intersection &_intersection, const Vector3f &wo) const;
 };
